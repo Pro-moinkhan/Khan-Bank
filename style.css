@@ -44,5 +44,6 @@ body{
 }
 
 .form-control{
-    width: 60%;
+    text-align: left;
+    width: 80%;
 }

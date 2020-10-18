@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khan Bank</title>
+    <title>R.C Bank</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="logInArea">
-        <h1 class = "text-center">Welcome to Khan Bank</h1>
+        <h1 class = "text-center">Welcome to R.C Bank</h1>
         <br>
         <div class="SubmitArea">
             <h4 class="Submitrh4">Login</h4>
@@ -28,14 +28,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="status diposit">
-                    <h5>Diposit</h5>
+                    <h5>Diposite</h5>
                     <h2>$ <span id="currentDeposite">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="status widthdrow">
                     <h5>Widthdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentWidthdraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -97,7 +97,13 @@
         const widthdrawbtn = document.getElementById("addWidthdraw");
         widthdrawbtn.addEventListener("click", function(){
             widthDrawNumber = getElementNumber("widthdrowAmount");
-            console.log(parseFloatnumber);
+            // calling function for widthdraw output:
+            UpdateAmount("currentWidthdraw", widthDrawNumber);
+            // making the widthdraw input value box nul:
+            document.getElementById("widthdrowAmount").value = "";
+            // callig function for widthdraw the balance amount:
+            UpdateAmount("currentBalance",-1 * widthDrawNumber);
+
         })
         // function for get value of deposite and widthdraw form:
         function getElementNumber(id){
