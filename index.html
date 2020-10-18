@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khan Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="logInArea">
+        <h1 class = "text-center">Welcome to Khan Bank</h1>
+        <br>
+        <div class="SubmitArea">
+            <h4 class="Submitrh4">Login</h4>
+            <br>
+            <input class="form-control" type="email" name="" id="SubmitEmail" placeholder="Email">
+            <br>
+            <input class="form-control" type="password" name="" id="SubmitPassword" placeholder="Password">
+            <br>
+            <button id="enterButton" class="btn btn-success">Enter
+            </button>
+            <br>
+        </div>
+    </div>
+
+    <div id="transactionArea">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="status diposit">
+                    <h5>Diposit</h5>
+                    <h2>$ <span id="currentDeposite">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status widthdrow">
+                    <h5>Widthdraw</h5>
+                    <h2>$00</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status balance">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="currentBalance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="transactionArea">
+                    <h4>Diposit</h4>
+                    <br>
+                    <input id="depositeAmount" type="text" placeholder="$ amount you want to diposit" class="form-control">
+                    <br>
+                    <button id="addDiposite" class="btn btn-success trnBtn">Diposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="transactionArea">
+                    <h4>Widthdraw</h4>
+                    <br>
+                    <input id="widthdrowAmount" type="text" placeholder="$ amount you want to widthdraw" class="form-control">
+                    <br>
+                    <button id="addWidthdraw" class="btn btn-success trnBtn">widthdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // login button event handler:
+        const loginButtom = document.getElementById('enterButton');
+        loginButtom.addEventListener('click', function(){
+            const login = document.getElementById('logInArea');
+            login.style.display = "none";
+            const transactionArea = document.getElementById("transactionArea");
+            transactionArea.style.display = "block";
+        })
+
+        // deposite button event handler:
+        const dipositeBtn = document.getElementById("addDiposite");
+        dipositeBtn.addEventListener("click", function(){
+            const depositeNumber = getElementNumber("depositeAmount");
+
+            // 1.calling function for deposite:
+            UpdateAmount("currentDeposite", depositeNumber);  
+            // 2.calling function for balance:
+            UpdateAmount("currentBalance", depositeNumber);
+            // 3.making the input value box nul:
+            document.getElementById("depositeAmount").value = "";
+        })
+
+         // widthdraw button event handler:
+        const widthdrawbtn = document.getElementById("addWidthdraw");
+        widthdrawbtn.addEventListener("click", function(){
+            widthDrawNumber = getElementNumber("widthdrowAmount");
+            console.log(parseFloatnumber);
+        })
+        // function for get value of deposite and widthdraw form:
+        function getElementNumber(id){
+            const number = document.getElementById(id).value;
+            parseFloatnumber = parseFloat(number);
+            return parseFloatnumber;
+        }
+
+        // 1.function for sum of deposite and balance:
+        function UpdateAmount(id, depositeNumber){
+            const current = document.getElementById(id).innerText;
+            const parseFloatValue = parseFloat(current);
+            const total = depositeNumber + parseFloatValue;
+            document.getElementById(id).innerText = total;
+        }
+
+    </script>
+</body>
+</html> 
